@@ -15,7 +15,7 @@ public class QueryStringTestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // service 로부터 전달받은 HttpServletRequest 는 요청 시 전달한 값을 getParamer()로  추출할 수 있다.
+        // service 로부터 전달받은 HttpServletRequest 는 요청 시 전달한 값을 getParameter()로  추출할 수 있다.
         // 이 때 인자로 input 태그에 지정한 name 속성의 값을 문자열 형태로 전달하면 된다.
 
         String name = req.getParameter("name");
@@ -36,8 +36,9 @@ public class QueryStringTestServlet extends HttpServlet {
         System.out.println("국적 : " + national);
 
         // checkbox 는 다중으로 입력을 받을 수 있어, 선택된 값이 문자열 배열로 전달된다.
-        System.out.println("취미 : ");
         String[] hobbys = req.getParameterValues("hobbies");
+        System.out.println("취미 : " + hobbys.length);
+
 
         for (String hobby : hobbys) {
             System.out.println(hobby);
