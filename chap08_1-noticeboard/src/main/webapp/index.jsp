@@ -11,8 +11,10 @@
 
     <form>
         <label>제목 : </label>
-        <input type="text"/><br/>
+        <input type="text" id="title" name="title"/><br/>
         <label>내용 : </label>
+        <input type="text" id="content" name="content"/><br/><br/>
+        <input type="submit" value="작성하기">
 
     </form>
 </body>
