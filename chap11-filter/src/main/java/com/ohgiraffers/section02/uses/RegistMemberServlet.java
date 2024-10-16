@@ -23,5 +23,6 @@ public class RegistMemberServlet extends HttpServlet {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         System.out.println("비밀번호가 pass01 인지 확인 : " + passwordEncoder.matches("pass01", password));
+        // 암호화 된 내용을 2번째 인자로 전달해야 한다.
     }
 }
