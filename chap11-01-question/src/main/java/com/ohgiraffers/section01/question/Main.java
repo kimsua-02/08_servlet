@@ -1,5 +1,6 @@
 package com.ohgiraffers.section01.question;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,13 +15,10 @@ public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        UserPage user = (UserPage) session.getAttribute("user");
+        String username = (String) session.getAttribute("username");
 
-        if (user == null) {
-            req.setAttribute("username",user.getUsername());
-            req.getRequestDispatcher("/main.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect("login.jsp");
-        }
+        req.setAttribute("username", username);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("main.jsp");
+        dispatcher.forward(req, resp);
     }
 }

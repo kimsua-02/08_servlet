@@ -10,6 +10,7 @@
         <input type="password" name="password" placeholder="Password" required/>
         <button type="submit">로그인</button>
     </form>
+    <p style="color: red">${param.error}</p>
 <a href="membership.jsp">가입하기</a>
 </body>
 </html>
