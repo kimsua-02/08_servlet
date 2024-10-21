@@ -3,8 +3,8 @@ package com.ohgiraffers.mvc.common.jdbc;
 
 import com.ohgiraffers.mvc.common.config.ConfigLocation;
 
-import javax.imageio.IIOException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
@@ -17,22 +17,24 @@ public class JDBCTemplate {
         Properties prop = new Properties();
 
         try {
-            prop.load(new FileReader(ConfigLocation.CONFIG_CONFIG_LOCATION);
+            prop.load(new FileReader(ConfigLocation.CONFIG_CONFIG_LOCATION));
             String driver = prop.getProperty("driver");
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
-            String pass = prop.getProperty("pass");
+            String password = prop.getProperty("password");
 
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,password);
+            con = DriverManager.getConnection(url, user, password);
             con.setAutoCommit(false);
 
-        } catch (IIOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return con;
+            return con;
     }
 
     public static void close(Connection con) {
